@@ -39,4 +39,9 @@ public class CatController {
     public Cat findById(@PathVariable Integer id){
         return catService.findById(id);
     }
+    @RequestMapping(value = "/exception",method = RequestMethod.GET)
+    public void exception(){
+        int i = 1 / 0;
+        System.out.println("exception");
+    }
 }
