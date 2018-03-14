@@ -44,4 +44,8 @@ public class CatController {
         int i = 1 / 0;
         System.out.println("exception");
     }
+    @RequestMapping(value = "/findByCatName",method = RequestMethod.GET)
+    public  List<Cat> findByCatName(String catName){
+        return catService.findByCatName(catName);
+    }
 }
