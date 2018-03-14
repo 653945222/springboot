@@ -22,30 +22,50 @@ public class CatController {
     @Resource
     CatService catService;
 
-    @RequestMapping(value = "/save",method = RequestMethod.POST)
-    public void save(Cat cat){
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    public void save(Cat cat) {
         catService.save(cat);
     }
-    @RequestMapping(value = "/delete",method = RequestMethod.DELETE)
-    public void delete(Integer id){
+
+    @RequestMapping(value = "/delete", method = RequestMethod.DELETE)
+    public void delete(Integer id) {
         catService.delete(id);
     }
-    @RequestMapping(value = "/",method = RequestMethod.GET)
-    public List<Cat> findAll(){
+
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public List<Cat> findAll() {
         Iterator<Cat> iterator = catService.findAll().iterator();
         return IteratorUtils.toList(iterator);
     }
-    @RequestMapping(value = "/{id}",method = RequestMethod.GET)
-    public Cat findById(@PathVariable Integer id){
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public Cat findById(@PathVariable Integer id) {
         return catService.findById(id);
     }
-    @RequestMapping(value = "/exception",method = RequestMethod.GET)
-    public void exception(){
+
+    @RequestMapping(value = "/exception", method = RequestMethod.GET)
+    public void exception() {
         int i = 1 / 0;
         System.out.println("exception");
     }
-    @RequestMapping(value = "/findByCatName",method = RequestMethod.GET)
-    public  List<Cat> findByCatName(String catName){
+
+    @RequestMapping(value = "/findByCatName", method = RequestMethod.GET)
+    public List<Cat> findByCatName(String catName) {
         return catService.findByCatName(catName);
+    }
+
+    @RequestMapping(value = "/id/{id}", method = RequestMethod.GET)
+    public Cat findById2(@PathVariable Integer id) {
+        return catService.findById2(id);
+    }
+
+    @RequestMapping(value = "/name/{id}", method = RequestMethod.GET)
+    public String getCatNameById(@PathVariable Integer id) {
+        return catService.getCatNameById(id);
+    }
+
+    @RequestMapping(value = "/likeName/{name}", method = RequestMethod.GET)
+    public List<Cat> likeName(@PathVariable String name) {
+        return catService.likeName(name);
     }
 }

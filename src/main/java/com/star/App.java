@@ -3,6 +3,7 @@ package com.star;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.web.HttpMessageConverters;
@@ -13,6 +14,7 @@ import org.springframework.http.converter.HttpMessageConverter;
  * Created by liuquan on 2018/2/28.
  */
 @SpringBootApplication
+@MapperScan("com.star.mapper")
 public class App {
     public static void main(String[] args) {
         SpringApplication.run(App.class, args);
